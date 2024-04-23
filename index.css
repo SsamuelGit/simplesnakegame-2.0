@@ -19,7 +19,7 @@ body {
 }
 
 .title {
-    margin-top: 15px;
+    z-index: 1;
 }
 .title h1 {
     font-family: sans-serif;
