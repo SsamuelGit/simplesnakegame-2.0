@@ -4,7 +4,6 @@ body {
     height: 100vh;
     overflow-x: hidden;
     overflow-y: hidden;
-    z-index: 1;
 }
 
 .center {
