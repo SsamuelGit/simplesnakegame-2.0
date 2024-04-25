@@ -21,21 +21,21 @@ body {
 
 /* classes */
 
-.center {
-    display: flex;
+
+
+.menu {
     justify-content: center;
     text-align: center;
 }
 
-
-
-.title {
-    z-index: 1;
-}
 .title h1 {
     font-family: sans-serif;
     font-weight: bold;
-    color: black;
+    font-size: 12vh;
+}
+
+.selection {
+
 }
 
 /* animations */
