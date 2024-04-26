@@ -37,18 +37,52 @@ body {
 .selection {
     text-align: center;
     justify-content: center;
+    display: grid;
+    gap: 20px;
 }
 
 .selection button {
     font-family: sans-serif;
-    font-size: 6vh;
-    border-radius: 15px;
-    border-width: 3px;
-    border: solid;
-    border-color: rgb(207, 55, 0);
-    background-color: rgb(255, 68, 0);
-    padding: 10px;
+    font-size: 2.5rem;
 }
 
 
-/* animations */
+.menubtn {
+    padding: 0.75em 3em;
+    color: white;
+    background-color: rgb(18, 55, 59);
+    border: 3px solid black;
+    border-radius: 100vw;
+}
+
+
+.playbtn {
+    transition-duration: transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+
+}
+.playbtn:hover {
+    transform: translateX(25px);
+    background-color: rgb(25, 36, 39);
+}
+
+.settingsbtn {
+    transition-duration: transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+}
+.settingsbtn:hover {
+    transform: translateX(25px);
+    background-color: rgb(25, 36, 39);
+}
+
+.aboutusbtn {
+    transition-duration: transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+}
+.aboutusbtn:hover {
+    transform: translateX(25px);
+    background-color: rgb(25, 36, 39);
+}
