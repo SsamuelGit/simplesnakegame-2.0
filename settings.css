@@ -38,13 +38,11 @@
 
 .speedInput {
     -webkit-appearance: none;
-    height: 15px;
-    border-radius: 15px;
+    height: 10px;
+    border-radius: 10px;
     background: #d3d3d3;
     outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
+    opacity: 1;
 }
 .speedInput:hover {
     opacity: 1;
@@ -52,16 +50,17 @@
 .speedInput::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     background: black;
     cursor: pointer;
 }
 .speedInput::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
+    border-width: 0;
     background: black;
     cursor: pointer;
 }
