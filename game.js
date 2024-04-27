@@ -46,3 +46,23 @@ function calculateCellProperties(sizeToBeCalculated) {      //calculates the row
         return numberOfColumns;
     }
 }
+
+//other functions
+function calculateCellProperties(sizeToBeCalculated) {
+    if (sizeToBeCalculated == "row") {
+        let cellHeight = 1;
+        let numberOfRows;
+        for (numberOfRows = 500; cellHeight < 30; numberOfRows--) {
+            cellHeight = canvas.style.height / numberOfRows;
+        }
+        return numberOfRows;
+    }
+    if (sizeToBeCalculated == "column") {
+        let cellWidth = 1;
+        let numberOfColumns;
+        for (numberOfColumns = 500; cellWidth < 30; numberOfColumns--) {
+            cellWidth = canvas.style.width / numberOfColumns;
+        }
+        return numberOfColumns;
+    }
+}
