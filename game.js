@@ -1,5 +1,5 @@
 
-//render the canvas (set canvas size to screen size * 3/4)
+//render the canvas (set canvas size to 3/4 of the screen size)
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
 window.onload = function() {
@@ -15,6 +15,7 @@ console.log(columns);
 
 //call the functions so that the game works
 draw();
+gameLoop();
 
 //very important function to calculate the game
 function gameLoop() {
@@ -57,7 +58,7 @@ function calculateCellProperties(sizeToBeCalculated) {
         }
         return numberOfRows;
     }
-    if (sizeToBeCalculated == "column") {
+    else if (sizeToBeCalculated == "column") {
         let cellWidth = 1;
         let numberOfColumns;
         for (numberOfColumns = 500; cellWidth < 30; numberOfColumns--) {
