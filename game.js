@@ -6,6 +6,10 @@ window.onload = function() {
     canvas.style.width = (window.innerWidth / 4 * 3) + 'px';
     canvas.style.height = (window.innerHeight / 4 * 3)  + 'px';
 }
+window.onresize = function() {
+    canvas.style.width = (window.innerWidth / 4 * 3) + 'px';
+    canvas.style.height = (window.innerHeight / 4 * 3)  + 'px';
+}
 
 //create necessary variables
 const rows = calculateCellProperties("row");
