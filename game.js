@@ -1,24 +1,25 @@
 
 //create necessary variables
+const canvas = document.getElementById("canvas");
+const context = canvas.getContext("2d");
 let rows;
 let columns;
 
+
 //render the canvas (set canvas size to 3/4 of the screen size)
-const canvas = document.getElementById("canvas");
-const context = canvas.getContext("2d");
 window.onload = function() {
     canvas.style.width = (window.innerWidth / 4 * 3) + 'px';
     canvas.style.height = (window.innerHeight / 4 * 3)  + 'px';
-    rows = calculateCellProperties("row");
-    columns = calculateCellProperties("column"); 
+    rows = calculateCellProperties("row", canvas);
+    columns = calculateCellProperties("column", canvas); 
     console.log(rows);
     console.log(columns);
 }
 window.onresize = function() {
     canvas.style.width = (window.innerWidth / 4 * 3) + 'px';
     canvas.style.height = (window.innerHeight / 4 * 3)  + 'px';
-    rows = calculateCellProperties("row");
-    columns = calculateCellProperties("column"); 
+    rows = calculateCellProperties("row", canvas);
+    columns = calculateCellProperties("column", canvas); 
     console.log(rows);
     console.log(columns);
 }
@@ -40,23 +41,23 @@ function draw() {
 }
 
 //other functions
-function calculateCellProperties(sizeToBeCalculated) {      //calculates the rows and columns so that the cell height and width are greater than or equal to 30
+function calculateCellProperties(sizeToBeCalculated, canvas) {
     if (sizeToBeCalculated == "row") {
         let cellHeight = 1;
         let numberOfRows;
         for (numberOfRows = 500; cellHeight < 30; numberOfRows--) {
-            cellHeight = canvas.style.height / numberOfRows;
+            cellHeight = canvas.offsetHeight / numberOfRows;
         }
         return numberOfRows;
-    }
-    if (sizeToBeCalculated == "column") {
+    } else if (sizeToBeCalculated == "column") {
         let cellWidth = 1;
         let numberOfColumns;
         for (numberOfColumns = 500; cellWidth < 30; numberOfColumns--) {
-            cellWidth = canvas.style.width / numberOfColumns;
+            cellWidth = canvas.offsetWidth / numberOfColumns;
         }
         return numberOfColumns;
     }
 }
+
 
 
