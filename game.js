@@ -9,9 +9,7 @@ let columns;
 //render the canvas (set canvas size to 3/4 of the screen size)
 window.onload = function() {
     canvas.style.width = (window.innerWidth / 4 * 3) + 'px';
-    canvas.style.height = (window.innerHeight / 4 * 3)  + 'px';
-    rows = calculateCellProperties("row", canvas);
-    columns = calculateCellProperties("column", canvas); 
+    canvas.style.height = (window.innerHeight / 4 * 3)  + 'px'; 
     console.log(rows);
     console.log(columns);
 }
@@ -41,23 +39,6 @@ function draw() {
 }
 
 //other functions
-function calculateCellProperties(sizeToBeCalculated, canvas) {
-    if (sizeToBeCalculated == "row") {
-        let cellHeight = 1;
-        let numberOfRows;
-        for (numberOfRows = 500; cellHeight < 30; numberOfRows--) {
-            cellHeight = canvas.offsetHeight / numberOfRows;
-        }
-        return numberOfRows;
-    } else if (sizeToBeCalculated == "column") {
-        let cellWidth = 1;
-        let numberOfColumns;
-        for (numberOfColumns = 500; cellWidth < 30; numberOfColumns--) {
-            cellWidth = canvas.offsetWidth / numberOfColumns;
-        }
-        return numberOfColumns;
-    }
-}
 
 
 
