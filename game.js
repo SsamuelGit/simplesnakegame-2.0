@@ -1,26 +1,137 @@
+let canvas = document.getElementById('canvas');
+let ctx = canvas.getContext('2d');
+let rows = 20;
+let cols = 20;
+let snake = [{
+    x: 19,
+    y: 3
+}];
 
-//create necessary variables
-const canvas = document.getElementById("canvas");
-const context = canvas.getContext("2d");
-let rows = canvas.height / 30;
-let columns = canvas.width / 30;
+let food;
 
-//call the functions so that the game works
+let cellWidth = canvas.width / cols;
+let cellHeight = canvas.height / rows;
+let direction = 'LEFT';
+let foodCollected = false;
+
+placeFood();
+
+setInterval(gameLoop, 200);
+document.addEventListener('keydown', keyDown);
+
+
 draw();
-gameLoop();
 
-//very important function to calculate the game
-function gameLoop() {
-
-}
-
-//very important function to draw the game
 function draw() {
-    context.fillStyle = "black";
-    context.fillRect(0, 0, window.innerWidth / 4 * 3, window.innerHeight / 4 * 3);
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'white';
+
+
+    snake.forEach(part => add(part.x, part.y));
+
+    ctx.fillStyle = 'yellow';
+    add(food.x, food.y); // Food
+
+    requestAnimationFrame(draw);
 }
 
-//other functions
+function testGameOver() {
+
+    let firstPart = snake[0];
+    let otherParts = snake.slice(1);
+    let duplicatePart = otherParts.find(part => part.x == firstPart.x && part.y == firstPart.y);
+
+    // 1. Schlange läuft gegen die Wand
+    if (snake[0].x < 0 ||
+        snake[0].x > cols - 1 ||
+        snake[0].y < 0 ||
+        snake[0].y > rows - 1 ||
+        duplicatePart
+    ) {
+        placeFood();
+        snake = [{
+            x: 19,
+            y: 3
+        }];
+        direction = 'LEFT';
+    }
+
+}
 
 
+function placeFood() {
+    let randomX = Math.floor(Math.random() * cols);
+    let randomY = Math.floor(Math.random() * rows);
 
+    food = {
+        x: randomX,
+        y: randomY
+    };
+}
+
+function add(x, y) {
+    ctx.fillRect(x * cellWidth, y * cellHeight, cellWidth - 1, cellHeight - 1);
+}
+
+function shiftSnake() {
+    for (let i = snake.length - 1; i > 0; i--) {
+        const part = snake[i];
+        const lastPart = snake[i - 1];
+        part.x = lastPart.x;
+        part.y = lastPart.y;
+    }
+}
+
+function gameLoop() {
+    testGameOver();
+    if (foodCollected) {
+        snake = [{
+            x: snake[0].x,
+            y: snake[0].y
+        }, ...snake];
+
+        foodCollected = false;
+    }
+
+    shiftSnake();
+
+    if (direction == 'LEFT') {
+        snake[0].x--;
+    }
+
+    if (direction == 'RIGHT') {
+        snake[0].x++;
+    }
+
+    if (direction == 'UP') {
+        snake[0].y--;
+    }
+
+    if (direction == 'DOWN') {
+        snake[0].y++;
+    }
+
+    if (snake[0].x == food.x &&
+        snake[0].y == food.y) {
+        foodCollected = true;
+
+        placeFood();
+    }
+
+}
+
+function keyDown(e) {
+    if (e.keyCode == 37) {
+        direction = 'LEFT';
+    }
+    if (e.keyCode == 38) {
+        direction = 'UP';
+    }
+    if (e.keyCode == 39) {
+        direction = 'RIGHT';
+    }
+    if (e.keyCode == 40) {
+        direction = 'DOWN';
+    }
+}
