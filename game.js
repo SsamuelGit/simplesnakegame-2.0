@@ -2,26 +2,8 @@
 //create necessary variables
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
-let rows;
-let columns;
-
-
-//render the canvas (set canvas size to 3/4 of the screen size)
-window.onload = function() {
-    canvas.style.width = (window.innerWidth / 4 * 3) + 'px';
-    canvas.style.height = (window.innerHeight / 4 * 3)  + 'px'; 
-    console.log(rows);
-    console.log(columns);
-}
-window.onresize = function() {
-    canvas.style.width = (window.innerWidth / 4 * 3) + 'px';
-    canvas.style.height = (window.innerHeight / 4 * 3)  + 'px';
-    rows = calculateCellProperties("row", canvas);
-    columns = calculateCellProperties("column", canvas); 
-    console.log(rows);
-    console.log(columns);
-}
-
+let rows = canvas.height / 30;
+let columns = canvas.width / 30;
 
 //call the functions so that the game works
 draw();
